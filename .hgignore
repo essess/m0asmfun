@@ -1,5 +1,4 @@
 syntax: glob
 *.hzs
 *.bak
-THUMB Debug
-THUMB Release
+THUMB Flash Debug
