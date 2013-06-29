@@ -1,0 +1,29 @@
+<!DOCTYPE CrossStudio_Project_File>
+<solution Name="m0asmfun" target="8" version="2">
+  <project Name="m0asmfun">
+    <configuration Name="Common" Target="LPC1114/301" arm_architecture="v6M" arm_core_type="Cortex-M0" arm_gcc_target="arm-unknown-eabi" arm_interwork="No" arm_simulator_memory_simulation_filename="$(TargetsDir)/LPC1000/LPC1000SimulatorMemory.dll" arm_simulator_memory_simulation_parameter="LPC11;0x8000;0x2000;0x0" arm_target_debug_interface_type="ADIv5" arm_target_interface_type="SWD" arm_target_loader_parameter="12000000" arm_use_gcc_libraries="No" asm_additional_options="-I$(ProjectDir)/inc" build_treat_warnings_as_errors="Yes" c_only_additional_options="-fms-extensions" gcc_entry_point="reset" link_include_standard_libraries="No" link_include_startup_code="No" linker_memory_map_file="$(TargetsDir)/LPC1000/LPC1114_MemoryMap.xml" oscillator_frequency="12MHz" project_directory="" project_type="Executable" property_groups_file_path="$(TargetsDir)/LPC1000/propertyGroups11xx.xml"/>
+    <configuration Name="Flash" Placement="Flash" arm_target_flash_loader_file_path="$(TargetsDir)/LPC1000/Release/Loader_lpc1100.elf" arm_target_flash_loader_type="LIBMEM RPC Loader" linker_patch_build_command="&quot;$(StudioDir)/bin/crossscript&quot; &quot;load(\&quot;$(TargetsDir)/LPC1000/LPC1000_LinkPatch.js\&quot;);patch(\&quot;$(TargetPath)\&quot;);&quot;" linker_section_placement_file="$(StudioDir)/targets/Cortex_M/flash_placement.xml" target_reset_script="FLASHReset()"/>
+    <configuration Name="RAM" Placement="RAM" linker_section_placement_file="$(StudioDir)/targets/Cortex_M/ram_placement.xml" target_reset_script="SRAMReset()"/>
+    <folder Name="src">
+      <configuration Name="Common" filter="s"/>
+      <file file_name="src/reset.s"/>
+      <file file_name="src/vectors.s"/>
+    </folder>
+    <folder Name="inc">
+      <configuration Name="Common" filter="inc"/>
+      <file file_name="inc/lpc11xx.inc"/>
+    </folder>
+    <file file_name="LPC1100_Target.js">
+      <configuration Name="Common" file_type="Reset Script"/>
+    </file>
+    <file file_name="lpc1114.ld">
+      <configuration Name="Common" file_type="Linker Script"/>
+    </file>
+  </project>
+  <configuration Name="THUMB Flash Debug" inherited_configurations="THUMB;Flash;Debug"/>
+  <configuration Name="THUMB" Platform="ARM" arm_instruction_set="THUMB" arm_library_instruction_set="THUMB" c_preprocessor_definitions="__THUMB" hidden="Yes"/>
+  <configuration Name="Flash" c_preprocessor_definitions="__FLASH_BUILD" hidden="Yes"/>
+  <configuration Name="Debug" c_preprocessor_definitions="DEBUG" gcc_debugging_level="Level 2" gcc_optimization_level="None" hidden="Yes"/>
+  <configuration Name="THUMB Flash Release" inherited_configurations="THUMB;Flash;Release"/>
+  <configuration Name="Release" c_preprocessor_definitions="NDEBUG" gcc_debugging_level="Level 1" gcc_optimization_level="Level 1" hidden="Yes"/>
+</solution>
